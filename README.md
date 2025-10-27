@@ -1,6 +1,6 @@
 # CS149 Parallel Computing C++ Review
 
-## Concepts
+## Assignment 2 Concepts
 - Create thread
 - Join
 - Mutex
@@ -9,3 +9,5 @@
 - Conditional
     - Notifying threads to wake up
     - Putting threads to sleep
+
+## Assignment 3 Concepts
