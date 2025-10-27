@@ -13,7 +13,7 @@
 
 int main() {
     // Your code here.
-    std::cout << "Part 5B placeholder. Implement producer–consumer.\n";
+    std::cout << "Part 6 placeholder. Implement producer–consumer.\n";
     return 0;
 }
 
