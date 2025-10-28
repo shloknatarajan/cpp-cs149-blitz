@@ -1,31 +1,35 @@
 #include <thread>
-#include <iostream>
 #include <mutex>
+#include <iostream>
 #include <vector>
 
-int counter = 0;
+/*
+Create a counter
+have locks and unlocks around it using unique lock instead though
+*/
+
 std::mutex mtx;
+int counter = 0;
 
 void increment_counter() {
-    std::unique_lock<std::mutex> lock(mtx, std::defer_lock);
-    lock.lock();
-    for (int i = 0; i < 1000000; i++) { 
+    std::unique_lock<std::mutex> ulock(mtx, std::defer_lock);
+    ulock.lock();
+    for (int i = 0; i < 1000000; i++) {
         counter++;
     }
-    lock.unlock();
+    ulock.unlock();
 }
 
 int main() {
+    // Create threads
     std::vector<std::thread> threads;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         threads.emplace_back(increment_counter);
     }
 
     for (auto& t: threads) {
         t.join();
     }
-
     std::cout << "Final Count: " << counter << std::endl;
-
     return 0;
 }
